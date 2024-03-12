@@ -1,0 +1,6 @@
+{
+  "samples": [
+    { "id": "1", "name": "a title", "description": "a comment about post 1" },
+    { "id": "2", "name": "another title", "description": "another comment about post 1" }
+  ]
+}
