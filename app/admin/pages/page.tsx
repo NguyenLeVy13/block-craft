@@ -47,7 +47,7 @@ export default function Pages() {
     return () => subscription.unsubscribe();
   }, [watch]);
 
-  const filteredData = samples.filter((item) => {
+  const filteredData = pages.filter((item) => {
     return (
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase())
