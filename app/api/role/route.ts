@@ -10,12 +10,12 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const id = query.id as string;
 
     if (id) {
-      let result = await prisma.page.findUnique({
+      let result = await prisma.role.findUnique({
         where: { id },
       });
       return NextResponse.json(result);
     } else {
-      let result = await prisma.page.findMany()
+      let result = await prisma.role.findMany()
       return NextResponse.json(result);
     }
   } catch (error: any) {
@@ -26,7 +26,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 export async function POST(req: NextRequest, res?: NextResponse) {
   try {
     const data = await req.json();
-    const result = await prisma.page.create({
+    const result = await prisma.role.create({
       data
     });
     return NextResponse.json(result);
@@ -40,7 +40,7 @@ export async function PUT(req: NextRequest, res?: NextResponse) {
     const { query } = parse(req.url || "", true);
     const id = query.id as string;
     const data = await req.json();
-    const result = await prisma.page.update({
+    const result = await prisma.role.update({
       where: { id },
       data,
     });
@@ -52,7 +52,7 @@ export async function DELETE(req: NextRequest, res?: NextResponse) {
   try {
     const { query } = parse(req.url || "", true);
     const id = query.id as string;
-    const result = await prisma.page.delete({
+    const result = await prisma.role.delete({
       where: { id },
     });
     return NextResponse.json("");

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { BaseLayout } from "../../components/base-layout";
 import { BlockCraftTable } from "../../components/table";
-import { ISample, useSampleStore } from "../../stores/sample";
+import { IPage, usePageStore } from "../../stores/page";
 import { MRT_ColumnDef } from "material-react-table";
 import { Button, Flex, Grid, Text } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
@@ -34,13 +34,15 @@ interface IFormInputs {
 
 export default function Pages() {
   const router = useRouter();
-  const [pages, setPages] = useState([]);
+  const { getAllPages, pages } = usePageStore();
   const { register, watch } = useForm<IFormInputs>();
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-
-  }, []);
+    if (!pages?.length) {
+      getAllPages({});
+    }
+  }, [pages]);
 
   useEffect(() => {
     const subscription = watch((value) => setSearchQuery(value.search));
@@ -55,7 +57,7 @@ export default function Pages() {
   });
 
   const onNavigateCreateForm = () => {
-    
+    router.push('/admin/pages/form');
   }
 
   return (
