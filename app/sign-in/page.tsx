@@ -39,17 +39,17 @@ export default function SignIn() {
                   <path
                     d="M21.5 28L30 20V35H15L21.5 28Z"
                     fill="white"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <path
                     d="M30 35H45V50H30V35Z"
                     fill="white"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <path
                     d="M45 50H60L52.5 57.5L45 65V50Z"
                     fill="white"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                 </svg>
               </a>

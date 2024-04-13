@@ -50,13 +50,13 @@ const Header = ({ editMode }) => (
               <path
                 d="M13.3333 19.1667L20 12.5V25H7.5L13.3333 19.1667Z"
                 fill="white"
-                fill-opacity="0.4"
+                fillOpacity="0.4"
               />
-              <path d="M20 25H32.5V37H20V25Z" fill="white" fill-opacity="0.4" />
+              <path d="M20 25H32.5V37H20V25Z" fill="white" fillOpacity="0.4" />
               <path
                 d="M32.5 37H45L38.75 43.25L32.5 49.5V37Z"
                 fill="white"
-                fill-opacity="0.4"
+                fillOpacity="0.4"
               />
             </svg>
           </a>
