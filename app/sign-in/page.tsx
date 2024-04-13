@@ -1,22 +1,38 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Controller, useForm } from "react-hook-form";
+import { useState } from "react";
 
-interface IFormInputs {
+interface ILoginInfo {
   email: string;
   password: string;
 }
 
 export default function SignIn() {
   const router = useRouter();
-  const { control, handleSubmit } = useForm<IFormInputs>();
 
-  const onsubmit = (data: IFormInputs) => {
-    if (data.email === "admin@gmail.com" && data.password === "admin") {
+  const [loginInfo, setLoginInfo] = useState<ILoginInfo>({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = () => {
+    if (
+      loginInfo.email === "admin@gmail.com" &&
+      loginInfo.password === "admin"
+    ) {
       router.push("/admin/overview");
     }
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLoginInfo({
+      ...loginInfo,
+      [name]: value,
+    });
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -56,49 +72,30 @@ export default function SignIn() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Welcome to BlockCraft!
               </h1>
-              <p className="dark:text-white">Log in to your BlockCraft account</p>
+              <p className="dark:text-white">
+                Log in to your BlockCraft account
+              </p>
             </div>
 
-            <form
-              className="space-y-4 md:space-y-6"
-              onSubmit={handleSubmit(onsubmit)}
-            >
+            <div className="space-y-4 md:space-y-6">
               <div>
-                <Controller
-                  control={control}
-                  rules={{
-                    maxLength: 100,
-                  }}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <input
-                      type="email"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Email"
-                      onBlur={onBlur}
-                      onChange={onChange}
-                      value={value}
-                    />
-                  )}
+                <input
                   name="email"
+                  type="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Email"
+                  onChange={handleInputChange}
+                  value={loginInfo.email}
                 />
               </div>
               <div>
-                <Controller
-                  control={control}
-                  rules={{
-                    maxLength: 100,
-                  }}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <input
-                      type="password"
-                      placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      onBlur={onBlur}
-                      onChange={onChange}
-                      value={value}
-                    />
-                  )}
+                <input
                   name="password"
+                  type="password"
+                  placeholder="••••••••"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  onChange={handleInputChange}
+                  value={loginInfo.password}
                 />
               </div>
               <div className="flex items-center justify-between">
@@ -122,12 +119,12 @@ export default function SignIn() {
                 </div>
               </div>
               <button
-                type="submit"
                 className="w-full text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+                onClick={handleSubmit}
               >
                 Sign in
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
