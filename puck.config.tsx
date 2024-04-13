@@ -9,6 +9,10 @@ import { Flex } from "./app/components/blocks/Flex";
 import { Stats } from "./app/components/blocks/Stats";
 import { VerticalSpace } from "./app/components/blocks/VerticalSpace";
 import Template from "./app/components/blocks/Template";
+import { CTASection } from "./app/components/blocks/CTASections";
+import { FeatureSection } from "./app/components/blocks/FeatureSections";
+import { HeroSection } from "./app/components/blocks/HeroSections";
+import { NewsletterSection } from "./app/components/blocks/NewsletterSections";
 
 type Props = {
   HeadingBlock: { title: string };
@@ -21,6 +25,10 @@ type Props = {
   Stats: any;
   Text: any;
   VerticalSpace: any;
+  CTASection: any;
+  FeatureSection: any;
+  HeroSection: any;
+  NewsletterSection: any;
 };
 
 export const config: Config<Props> = {
@@ -47,6 +55,10 @@ export const config: Config<Props> = {
     Stats: Stats,
     Text: TextLabel,
     VerticalSpace: VerticalSpace,
+    CTASection: CTASection,
+    FeatureSection: FeatureSection,
+    HeroSection: HeroSection,
+    NewsletterSection: NewsletterSection
   },
 };
 

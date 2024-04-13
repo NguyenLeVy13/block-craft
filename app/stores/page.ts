@@ -5,7 +5,7 @@ import axios from "axios";
 import { API_URL } from "../../lib/setting";
 
 export interface IPage {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   content?: string;
@@ -36,7 +36,7 @@ export const usePageStore = create<IState>((set) => ({
   page: null,
   getAllPages: async (params: IParams) => {
     try {
-      const response = await axios.get<IPage[]>(`${API_URL}/pages`);
+      const response = await axios.get<IPage[]>(`${API_URL}/page`);
       set({ pages: response.data });
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -44,7 +44,7 @@ export const usePageStore = create<IState>((set) => ({
   },
   addPage: async (page: IPage) => {
     try {
-      await axios.post(`${API_URL}/pages`, page);
+      await axios.post(`${API_URL}/page`, page);
       set((state) => ({ pages: [...state.pages, page] }));
     } catch (error) {
       console.error("Error adding item:", error);
@@ -52,7 +52,7 @@ export const usePageStore = create<IState>((set) => ({
   },
   updatePage: async (id: string, page: IPage) => {
     try {
-      await axios.put(`${API_URL}/pages/${id}`, page);
+      await axios.put(`${API_URL}/page/${id}`, page);
       set((state) => ({
         pages: state.pages.map((item) => (item.id === id ? page : item)),
       }));
@@ -62,7 +62,7 @@ export const usePageStore = create<IState>((set) => ({
   },
   deletePage: async (id: string) => {
     try {
-      await axios.delete(`${API_URL}/pages/${id}`);
+      await axios.delete(`${API_URL}/page/${id}`);
       set((state) => ({
         pages: state.pages.filter((item) => item.id !== id),
       }));

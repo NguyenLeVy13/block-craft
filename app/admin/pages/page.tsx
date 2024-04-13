@@ -9,11 +9,7 @@ import { Button, Flex, Grid, Text } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation'
 
-const columns: MRT_ColumnDef<ISample>[] = [
-  {
-    accessorKey: "id",
-    header: "Id",
-  },
+const columns: MRT_ColumnDef<IPage>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -42,7 +38,7 @@ export default function Pages() {
     if (!pages?.length) {
       getAllPages({});
     }
-  }, [pages]);
+  }, []);
 
   useEffect(() => {
     const subscription = watch((value) => setSearchQuery(value.search));
@@ -68,13 +64,13 @@ export default function Pages() {
             List
           </Text>
           <Text color="gray" size="3">
-            Samples
+            Pages
           </Text>
         </Flex>
 
         <Flex direction="row" justify="end">
           <Button size="3" variant="soft" onClick={() => onNavigateCreateForm()}>
-            New sample
+            New pages
           </Button>
         </Flex>
       </Grid>
