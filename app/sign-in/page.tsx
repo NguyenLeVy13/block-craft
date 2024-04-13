@@ -23,10 +23,10 @@ export default function SignIn() {
       loginInfo.email === "admin@gmail.com" &&
       loginInfo.password === "admin"
     ) {
-      toast.success("Đăng nhập thành công!");
+      toast.success("Login successfully, Redirecting to admin page");
       router.push("/admin/overview");
     } else {
-      toast.error("Thông tin đăng nhập không chính xác!");
+      toast.error("Invalid email or password!");
     }
   };
 
