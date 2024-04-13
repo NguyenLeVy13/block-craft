@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { toast } from "react-toastify";
+
 interface ILoginInfo {
   email: string;
   password: string;
@@ -12,8 +14,8 @@ export default function SignIn() {
   const router = useRouter();
 
   const [loginInfo, setLoginInfo] = useState<ILoginInfo>({
-    email: "",
-    password: "",
+    email: "admin@gmail.com",
+    password: "admin",
   });
 
   const handleSubmit = () => {
@@ -21,7 +23,10 @@ export default function SignIn() {
       loginInfo.email === "admin@gmail.com" &&
       loginInfo.password === "admin"
     ) {
+      toast.success("Đăng nhập thành công!");
       router.push("/admin/overview");
+    } else {
+      toast.error("Thông tin đăng nhập không chính xác!");
     }
   };
 
