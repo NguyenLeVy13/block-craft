@@ -2,8 +2,8 @@
 
 import type { Data } from "@measured/puck";
 import { Puck } from "@measured/puck";
-import config from "../../../../puck.config";
-import { BaseLayout } from "../../../components/base-layout";
+import config from "@/puck.config";
+import { BaseLayout } from "@/app/components/base-layout";
 import "./style.scss";
 
 export function Client({ path, data }: { path: string; data: Data }) {

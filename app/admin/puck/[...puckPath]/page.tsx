@@ -13,7 +13,7 @@
 
 import { Client } from "./client";
 import { Metadata } from "next";
-import { getPage } from "../../../../lib/get-page";
+import { getPage } from "@/lib/get-page";
 
 export async function generateMetadata({
   params: { puckPath = [] },

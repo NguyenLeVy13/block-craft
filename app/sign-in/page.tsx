@@ -56,7 +56,7 @@ export default function SignIn() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Welcome to BlockCraft!
               </h1>
-              <p>Log in to your BlockCraft account</p>
+              <p className="dark:text-white">Log in to your BlockCraft account</p>
             </div>
 
             <form
