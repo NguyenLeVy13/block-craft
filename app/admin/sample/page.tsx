@@ -53,7 +53,7 @@ export default function SamplePage() {
   });
 
   const onNavigateCreateForm = () => {
-    router.push('/admim/sample/form');
+    router.push('/admin/sample/form');
   }
 
   return (

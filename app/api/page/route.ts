@@ -52,7 +52,7 @@ export async function DELETE(req: NextRequest, res?: NextResponse) {
   try {
     const { query } = parse(req.url || "", true);
     const id = query.id as string;
-    const user = await prisma.page.delete({
+    const result = await prisma.page.delete({
       where: { id },
     });
     return NextResponse.json("");

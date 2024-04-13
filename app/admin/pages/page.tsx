@@ -3,17 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { BaseLayout } from "../../components/base-layout";
 import { BlockCraftTable } from "../../components/table";
-import { ISample, useSampleStore } from "../../stores/sample";
+import { IPage, usePageStore } from "../../stores/page";
 import { MRT_ColumnDef } from "material-react-table";
 import { Button, Flex, Grid, Text } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation'
 
-const columns: MRT_ColumnDef<ISample>[] = [
-  {
-    accessorKey: "id",
-    header: "Id",
-  },
+const columns: MRT_ColumnDef<IPage>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -34,12 +30,14 @@ interface IFormInputs {
 
 export default function Pages() {
   const router = useRouter();
-  const [pages, setPages] = useState([]);
+  const { getAllPages, pages } = usePageStore();
   const { register, watch } = useForm<IFormInputs>();
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-
+    if (!pages?.length) {
+      getAllPages({});
+    }
   }, []);
 
   useEffect(() => {
@@ -55,7 +53,7 @@ export default function Pages() {
   });
 
   const onNavigateCreateForm = () => {
-    
+    router.push('/admin/pages/form');
   }
 
   return (
@@ -66,13 +64,13 @@ export default function Pages() {
             List
           </Text>
           <Text color="gray" size="3">
-            Samples
+            Pages
           </Text>
         </Flex>
 
         <Flex direction="row" justify="end">
           <Button size="3" variant="soft" onClick={() => onNavigateCreateForm()}>
-            New sample
+            New pages
           </Button>
         </Flex>
       </Grid>

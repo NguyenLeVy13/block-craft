@@ -2,5 +2,8 @@
   "samples": [
     { "id": "1", "name": "a title", "description": "a comment about post 1" },
     { "id": "2", "name": "another title", "description": "another comment about post 1" }
+  ],
+  "pages": [
+    { "id": "1", "name": "Home", "description": "Home", "content": "", "path": "", "root": "", "createdBy": "", "createdDate": "", "updatedBy": "", "updatedDate": "" }
   ]
 }
